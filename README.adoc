@@ -1,0 +1,21 @@
+= Scaffold shell to deploy React + Typescript + ESLint + Jest + Bootstrap + Webpack config
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+NOTE: A simple shell to create all initial files for a working configuration with React + Typescript + ESLint + Jest + Bootstrap + Webpack config
+
+Based on:
+
+- https://www.typescriptlang.org/docs/handbook/react-&-webpack.html
+- https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md
+- https://www.npmjs.com/package/eslint-plugin-react
+- https://github.com/kulshekhar/ts-jest
+- https://dev.to/muhajirdev/unit-testing-with-typescript-and-jest-2gln
+- https://jestjs.io/docs/en/getting-started
+
+Simply download and execute. Enjoy!
