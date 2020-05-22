@@ -18,4 +18,8 @@ Based on:
 - https://dev.to/muhajirdev/unit-testing-with-typescript-and-jest-2gln
 - https://jestjs.io/docs/en/getting-started
 
-Simply download and execute. Enjoy!
+Simply download and execute. 
+
+TIP: Default usage: `scaffold.sh project-name-in-kebab-case "Firstname Lastname" "Description"`
+
+Enjoy!
