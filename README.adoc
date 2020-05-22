@@ -17,6 +17,7 @@ Based on:
 - https://github.com/kulshekhar/ts-jest
 - https://dev.to/muhajirdev/unit-testing-with-typescript-and-jest-2gln
 - https://jestjs.io/docs/en/getting-started
+- https://www.npmjs.com/package/react-test-renderer and https://www.npmjs.com/package/@types/react-test-renderer
 
 Simply download and execute. 
 
