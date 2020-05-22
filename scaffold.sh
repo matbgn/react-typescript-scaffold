@@ -1,4 +1,6 @@
 #!/bin/bash
+mkdir $1
+cd $1
 mkdir src
 cd src
 mkdir components
@@ -23,7 +25,7 @@ node_modules
 dist
 coverage
 package-lock.json
-scaffold.sh
+yarn.lock
 EOL
 
 touch package.json
@@ -242,14 +244,14 @@ test('Test HelloProps', () => {
 });
 EOL
 
-npm i -D webpack webpack-cli gh-pages
+yarn add -D webpack webpack-cli gh-pages
 
-npm i react react-dom
+yarn add react react-dom
 
-npm i -D @types/react @types/react-dom
+yarn add -D @types/react @types/react-dom
 
-npm i -D typescript ts-loader css-loader html-loader sass-loader style-loader source-map-loader 
+yarn add -D typescript ts-loader css-loader html-loader sass-loader style-loader source-map-loader 
 
-npm i -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react
+yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react
 
-npm i -D jest ts-jest @types/jest
+yarn add -D jest ts-jest @types/jest
