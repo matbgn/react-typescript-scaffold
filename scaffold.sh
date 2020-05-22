@@ -17,6 +17,15 @@ endif::[]
 NOTE: TBD
 EOL
 
+touch .gitignore
+cat >> .gitignore <<EOL
+node_modules
+dist
+coverage
+package-lock.json
+scaffold.sh
+EOL
+
 touch package.json
 cat >> package.json <<EOL
 {
@@ -231,15 +240,6 @@ test('Test HelloProps', () => {
   });
   expect(container.textContent).toBe("Hello from TypeScript and React!");
 });
-EOL
-
-touch .gitignore
-cat >> .gitignore <<EOL
-node_modules
-dist
-coverage
-package-lock.json
-scaffold.sh
 EOL
 
 npm i -D webpack webpack-cli gh-pages
