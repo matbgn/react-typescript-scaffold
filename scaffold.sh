@@ -51,6 +51,7 @@ dist
 coverage
 package-lock.json
 yarn.lock
+__snapshots__
 EOL
 
 touch package.json
