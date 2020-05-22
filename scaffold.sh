@@ -280,4 +280,4 @@ yarn add -D typescript ts-loader css-loader html-loader sass-loader style-loader
 
 yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react
 
-yarn add -D jest ts-jest @types/jest react-test-renderer
+yarn add -D jest ts-jest @types/jest react-test-renderer @types/react-test-renderer
