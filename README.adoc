@@ -12,6 +12,7 @@ NOTE: A simple shell to create all initial files for a working configuration wit
 Based on:
 
 - https://www.typescriptlang.org/docs/handbook/react-&-webpack.html
+- https://medium.com/@dandobusiness/adding-sass-scss-to-your-react-typescript-project-162de415b19a
 - https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md
 - https://www.npmjs.com/package/eslint-plugin-react
 - https://github.com/kulshekhar/ts-jest
