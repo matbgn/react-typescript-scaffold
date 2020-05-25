@@ -16,7 +16,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-NOTE: TBD
+NOTE: $3
 EOL
 
 touch LICENSE.adoc
