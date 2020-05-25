@@ -277,6 +277,8 @@ yarn add react react-dom
 
 yarn add -D @types/react @types/react-dom
 
+yarn add -D node-sass @types/node-sass
+
 yarn add -D typescript ts-loader css-loader html-loader sass-loader style-loader source-map-loader 
 
 yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react
