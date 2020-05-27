@@ -216,35 +216,41 @@ cat >> index.tsx <<EOL
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Hello } from './components/hello';
+import { App } from './components/app';
 
 ReactDOM.render(
-  <Hello compiler='TypeScript' framework='React' />,
+  <App compiler='TypeScript' framework='React' />,
   document.getElementById('root')
 );
 EOL
 
 cd components
-touch hello.tsx
-cat >> hello.tsx <<EOL
+touch app.tsx
+cat >> app.tsx <<EOL
 import React from 'react';
 
-export interface HelloProps {
+export interface AppProps {
   compiler: string;
   framework: string;
 }
 
-export const Hello = (props: HelloProps): JSX.Element => (
-  <h1>
-    Hello from {props.compiler} and {props.framework}!
-  </h1>
-);
+export class App extends Component {
+  props: AppProps;
+
+  render = (): JSX.Element => {
+    return (
+      <h1>
+        Hello from {this.props.compiler} and {this.props.framework}!
+      </h1>
+    )
+  }
+}
 EOL
 
-touch hello.spec.tsx
-cat >> hello.spec.tsx << EOL
+touch app.spec.tsx
+cat >> app.spec.tsx << EOL
 import React from 'react';
-import { Hello } from "./hello";
+import { App } from "./app";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 
@@ -262,10 +268,10 @@ afterEach(() => {
   container = null;
 });
 
-test('Test HelloProps', () => {
+test('Test AppProps', () => {
   // Render a h1 title
   act(() => {
-    render( < Hello compiler = 'TypeScript' framework = 'React' /> , container);
+    render( < App compiler = 'TypeScript' framework = 'React' /> , container);
   });
   expect(container.textContent).toBe("Hello from TypeScript and React!");
 });
