@@ -257,7 +257,7 @@ export class App extends Component {
 
   render = (): JSX.Element => {
     return (
-      <div>
+      <div className="container mt-5">
         <Alert color="success">
           <h4 className="alert-heading">Well done!</h4>
           <p>
