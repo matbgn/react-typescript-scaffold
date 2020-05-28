@@ -311,7 +311,7 @@ yarn add react react-dom
 
 yarn add -D @types/react @types/react-dom
 
-yarn add reactstrap bootstrap
+yarn add reactstrap bootstrap jquery popper.js
 
 yarn add -D @types/reactstrap
 
