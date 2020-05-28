@@ -66,6 +66,7 @@ cat >> package.json <<EOL
     "test": "(npm run lint || true ) && jest --coverage",
     "lint": "eslint ./src --ext .tsx",
     "start": "npx webpack --mode=development --watch",
+    "build": "npx webpack -p",
     "deploy": "npx webpack -p && gh-pages -d dist"
   },
   "jest": {
@@ -84,6 +85,40 @@ cat >> package.json <<EOL
       "json",
       "node"
     ]
+  },
+  "devDependencies": {
+    "@types/jest": "latest",
+    "@types/node-sass": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/react-test-renderer": "latest",
+    "@types/reactstrap": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "css-loader": "latest",
+    "eslint": "latest",
+    "eslint-plugin-react": "latest",
+    "gh-pages": "latest",
+    "html-loader": "latest",
+    "jest": "latest",
+    "node-sass": "latest",
+    "react-test-renderer": "latest",
+    "sass-loader": "latest",
+    "source-map-loader": "latest",
+    "style-loader": "latest",
+    "ts-jest": "latest",
+    "ts-loader": "latest",
+    "typescript": "latest",
+    "webpack": "latest",
+    "webpack-cli": "latest"
+  },
+  "dependencies": {
+    "bootstrap": "latest",
+    "jquery": "latest",
+    "popper.js": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "reactstrap": "latest"
   }
 }
 EOL
@@ -305,22 +340,4 @@ test('Test App component', () => {
 });
 EOL
 
-yarn add -D webpack webpack-cli gh-pages
-
-yarn add react react-dom
-
-yarn add -D @types/react @types/react-dom
-
-yarn add reactstrap bootstrap jquery popper.js
-
-yarn add -D @types/reactstrap
-
-yarn add -D node-sass @types/node-sass
-
-yarn add -D typescript ts-loader css-loader html-loader sass-loader style-loader source-map-loader 
-
-yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react
-
-yarn add -D jest ts-jest @types/jest 
-
-yarn add -D react-test-renderer @types/react-test-renderer
+yarn install
