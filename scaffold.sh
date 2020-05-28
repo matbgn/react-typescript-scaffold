@@ -65,7 +65,7 @@ cat >> package.json <<EOL
   "scripts": {
     "test": "(npm run lint || true ) && jest --coverage",
     "lint": "eslint ./src --ext .tsx",
-    "start": "npx webpack --watch",
+    "start": "npx webpack --mode=development --watch",
     "deploy": "npx webpack -p && gh-pages -d dist"
   },
   "jest": {
@@ -92,16 +92,26 @@ touch tsconfig.json
 cat >> tsconfig.json <<EOL
 {
   "compilerOptions": {
+    // Output directory for building
     "outDir": "./dist/",
+    // Include module source maps for debugging
     "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
+    // Force to specify type (also any)
     "noImplicitAny": true,
+    // Force to define enclosing execution context
     "noImplicitThis": true,
-    "lib": ["dom", "esnext"],
-    "module": "esnext",
+    // Use specified module system
+    "module": "commonjs",
+    // Import CommonJS modules in compliance with es6 modules spec
     "esModuleInterop": true,
+    // Allow importing like `import React from 'react'`
+    "allowSyntheticDefaultImports": true,
+    // Include typings from built-in lib declarations
+    "lib": ["dom", "dom.iterable", "es5", "es6"],
+    // Transpile final code to ES5 standard
     "target": "es5",
-    "jsx": "react"
+    // Set React as the JSX factory
+    "jsx": "react",
   },
   "exclude": [
     "**/*.spec.ts",
@@ -120,9 +130,11 @@ module.exports = {
   // Enable sourcemaps for debugging webpack's output.
   devtool: "source-map",
 
+  entry: './src/index.tsx',
+
   resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx"]
+    // Add '.ts', '.tsx' and '.js' as resolvable extensions.
+    extensions: [".ts", ".tsx", ".js"]
   },
 
   module: {
@@ -130,11 +142,7 @@ module.exports = {
       {
         test: /\.ts(x?)$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: "ts-loader"
-          }
-        ]
+        use: 'ts-loader',
       },
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       {
@@ -194,8 +202,8 @@ cat >> index.html <<EOL
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <title>React boilerplate</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <title>$1</title>
   </head>
   <body>
     <div id="root"></div>
@@ -213,6 +221,8 @@ EOL
 cd src
 touch index.tsx
 cat >> index.tsx <<EOL
+import './index.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -224,10 +234,17 @@ ReactDOM.render(
 );
 EOL
 
+touch index.scss
+cat >> index.scss <<EOL
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+EOL
+
 cd components
 touch app.tsx
 cat >> app.tsx <<EOL
-import React from 'react';
+import React, { Component } from 'react';
+
+import { Alert } from "reactstrap";
 
 export interface AppProps {
   compiler: string;
@@ -239,9 +256,19 @@ export class App extends Component {
 
   render = (): JSX.Element => {
     return (
-      <h1>
-        Hello from {this.props.compiler} and {this.props.framework}!
-      </h1>
+      <div>
+        <Alert color="success">
+          <h4 className="alert-heading">Well done!</h4>
+          <p>
+            Aww yeah, you successfully installed this boilerplate. This is an app build with {this.props.compiler} and {this.props.framework}! 
+            With Bootstrap and Reactstrap on top of it!
+          </p>
+          <hr />
+          <p className="mb-0">
+            Whenever you need to, be sure to use margin utilities to keep things nice and tidy.
+          </p>
+        </Alert>
+      </div>
     )
   }
 }
@@ -268,12 +295,12 @@ afterEach(() => {
   container = null;
 });
 
-test('Test AppProps', () => {
-  // Render a h1 title
+test('Test App component', () => {
+  // Render a title HP content
   act(() => {
     render( < App compiler = 'TypeScript' framework = 'React' /> , container);
   });
-  expect(container.textContent).toBe("Hello from TypeScript and React!");
+  expect(container.textContent).toBe("Well done!Aww yeah, you successfully installed this boilerplate. This is an app build with TypeScript and React! With Bootstrap and Reactstrap on top of it!Whenever you need to, be sure to use margin utilities to keep things nice and tidy.");
 });
 EOL
 
@@ -282,6 +309,10 @@ yarn add -D webpack webpack-cli gh-pages
 yarn add react react-dom
 
 yarn add -D @types/react @types/react-dom
+
+yarn add reactstrap bootstrap
+
+yarn add -D @types/reactstrap
 
 yarn add -D node-sass @types/node-sass
 
